@@ -36,15 +36,15 @@ pip install Pillow==8.4.0
 
 5. Django中配置setting.py文件,修改连接数据库配置  
     DATABASES = {  
-        'default': {  
-            'ENGINE': 'django.db.backends.mysql',  
-            'NAME': 'userdb',  
-            'USER':'用户',  
-            'PASSWORD':'密码',  
-            'HOST':'数据库IP',  
-            'PORT':'数据库端口'  
-        }  
-    }  
+          'default': {  
+              'ENGINE': 'django.db.backends.mysql',  
+              'NAME': 'userdb',  
+              'USER':'用户',  
+              'PASSWORD':'密码',  
+              'HOST':'数据库IP',  
+              'PORT':'数据库端口'  
+          }  
+      }  
 
 5. Django迁移表到MySQL的userdb数据库中
     python manage.py makemigrations
