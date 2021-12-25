@@ -56,14 +56,33 @@ pip install Pillow==8.4.0
 
 #### 使用说明  
 
-1.  登录界面 
-![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD.png)
+1. 登录界面 
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD.png)  
 
- 
+2. 注册界面
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/blob/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD.png)  
 
+3. 数据库运维列表
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4%E5%88%97%E8%A1%A8.png)  
 
-2.  xxxx
-3.  xxxx
+4. 数据库监控指标数据表
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%91%E6%8E%A7%E6%8C%87%E6%A0%87%E6%95%B0%E6%8D%AE%E8%A1%A8.png)  
+
+5. sqlserver巡检功能
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/blob/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/sqlserver%E5%B7%A1%E6%A3%80.png)  
+
+6. 数据库监控数据报表图
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/blob/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E7%9B%91%E6%8E%A7%E6%95%B0%E6%8D%AE%E6%8A%A5%E8%A1%A8%E5%8A%9F%E8%83%BD.png)  
+
+7. Oracle安装工具
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E8%A3%85%E5%B7%A5%E5%85%B7.png)  
+
+8. Oracle巡检工具
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/oracle%E5%B7%A5%E5%85%B7.png)   
+
+9. 每日日报工具
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E6%AF%8F%E6%97%A5%E6%97%A5%E6%8A%A5%E5%B7%A5%E5%85%B7.png)    
+
 
 #### 参与贡献
 
