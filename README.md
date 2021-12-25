@@ -46,12 +46,12 @@ pip install Pillow==8.4.0
           }  
       }  
 
-5. Django迁移表到MySQL的userdb数据库中
-    python manage.py makemigrations
-    python manage.py migrate
+5. Django迁移表到MySQL的userdb数据库中  
+    python manage.py makemigrations  
+    python manage.py migrate  
 
-6. 启动DJango服务
-    python manage.py runserver 0.0.0.0:8000
+6. 启动DJango服务  
+    python manage.py runserver 0.0.0.0:8000  
     
 
 #### 使用说明
