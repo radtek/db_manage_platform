@@ -31,20 +31,20 @@ pip install Pillow==8.4.0
 
 3.  安装MySQL数据库（忽略此步骤）
 
-4. MySQL创建数据库
-    create database userdb default character set utf8;
+4. MySQL创建数据库  
+    create database userdb default character set utf8;  
 
-5. Django中配置setting.py文件,修改连接数据库配置
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'userdb',
-            'USER':'用户',
-            'PASSWORD':'密码',
-            'HOST':'数据库IP',
-            'PORT':'数据库端口'
-        }
-    }
+5. Django中配置setting.py文件,修改连接数据库配置  
+    DATABASES = {  
+        'default': {  
+            'ENGINE': 'django.db.backends.mysql',  
+            'NAME': 'userdb',  
+            'USER':'用户',  
+            'PASSWORD':'密码',  
+            'HOST':'数据库IP',  
+            'PORT':'数据库端口'  
+        }  
+    }  
 
 5. Django迁移表到MySQL的userdb数据库中
     python manage.py makemigrations
