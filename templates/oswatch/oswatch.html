@@ -1,0 +1,41 @@
+{% include 'dashboard/dashboard.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'db/css/index.basic.css' %}">
+{% endblock css %}
+{% block content %}
+    <section id="osw_sec" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="header-container">
+         <header class="common-header">OSW文件操作</header>
+    </div>
+    <ul id="myTab" class="nav nav-tabs">
+	<li class="active">
+		<a href="#oswatch_oper" data-toggle="tab">oswatch文件操作</a>
+	</li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="oswatch_oper">
+    <div id="query_container">
+        <form id='form1'>
+           <div style="line-height: 40px;">IP地址：</div>
+                <div>
+                    <select id="ip" name="ip" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        {% for db in real_db_info %}
+                        <option name="ip">{{ db.ip }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" name="btn_name" id="btn_name">
+                </div>
+            <div><input type='button' class="btn get" value="下载" id="btn1" name="btn1" style="width:80px;margin-left: 120px;background-color: navy;color:#FFF"></div>
+            <div><input type='button' class="btn get" value="查看" id="btn8" name="btn8" style="width:80px;margin-left: 120px;background-color: navy;color:#FFF"></div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'oswatch/js/member/oswatch.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% include "dashboard/dashboard.html" %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'db/css/index.basic.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'login/datatables/jquery.dataTables.css' %}">
+{% endblock css %}
+{% block content %}
+    <section class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div id="content_container" class="container">
+        <header class="header_title">数据库列表</header>
+        <div>
+            <table id="dblist" class="display" border="1px">
+                <thead>
+                    <tr>
+                        <th>ip地址</th>
+                        <th>类型</th>
+                        <th>信息更新时间</th>
+                        <th>信息创建时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for db in real_db_info %}
+                    <tr>
+                        <td>{{ db.ip }}</td>
+                        <td>{{ db.type }}</td>
+                        <td>{{ db.updated_time }}</td>
+                        <td>{{ db.created_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'login/datatables/datatables.js' %}"></script>
+<script src="{% static 'login/datatables/jquery.dataTables.js' %}"></script>
+<script>
+    $(document).ready( function () {
+        common_ops.changeMenu();
+        $('#dblist').DataTable( {
+    language:{
+        "processing": "处理中...",
+        "lengthMenu": "数据库列表：显示 _MENU_ 项结果",
+        "zeroRecords": "没有匹配结果",
+        "info": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "infoFiltered": "(由 _MAX_ 项结果过滤)",
+        "infoPostFix": "",
+        "search": "搜索:",
+        "searchPlaceholder": "搜索...",
+        "url": "",
+        "emptyTable": "表中数据为空",
+        "loadingRecords": "载入中...",
+        "infoThousands": ",",
+        "paginate": {
+            "first": "首页",
+            "previous": "上页",
+            "next": "下页",
+            "last": "末页"
+        },
+        "aria": {
+            "paginate": {
+                "first": "首页",
+                "previous": "上页",
+                "next": "下页",
+                "last": "末页"
+            },
+            "sortAscending": "以升序排列此列",
+            "sortDescending": "以降序排列此列"
+        },
+        "thousands": "."
+        }
+    } );
+    } );
+</script>
+{% endblock %}

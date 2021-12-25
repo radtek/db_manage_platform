@@ -1,0 +1,85 @@
+{% include 'dashboard/dashboard.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'db/css/index.basic.css' %}">
+{% endblock css %}
+{% block content %}
+    <section id="mon_result" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="header-container">
+         <header class="common-header">监控数据报表</header>
+    </div>
+    <ul id="myTab" class="nav nav-tabs">
+	<li class="active">
+		<a href="#home" data-toggle="tab">表空间报表</a>
+	</li>
+	<li><a href="#ios" data-toggle="tab">AAS报表</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="home">
+        <div id="query_container" class="c1">
+        <form id='form3'>
+                <div>
+                    <select id="ip3" name="ip3" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        {% for db in db_info %}
+                        <option name="ip3">{{ db.ip }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            <div style="line-height: 40px;">表空间名称：</div>
+                <div>
+                <select id="type3" name="type3" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        <option name="op1">TABLESPACESUPPORT</option>
+                        <option name="op2">TABLESPACEINDEX</option>
+                        <option name="op3">AUDITTBS</option>
+                        <option name="op4">TABLESPACEHIST</option>
+                        <option name="op4">TABLESPACEMES</option>
+                    </select>
+                </div>
+            <div style="line-height: 40px;">时间：</div>
+                <div>
+                <select id="time3" name="time3" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        <option name="op1">7天</option>
+                        <option name="op2">15天</option>
+                        <option name="op2">30天</option>
+                    </select>
+                </div>
+            <div><input type='button' class="btn get" value="查看" id="btn6" name="btn6" style="width:80px;margin-left: 120px;background-color: navy;color:#FFF"></div>
+        </form>
+    </div>
+{#    <div><img src="{% static 'pic/common.jpg' %}"></div>#}
+	</div>
+	<div class="tab-pane fade" id="ios">
+    <div id="query_container" class="c2">
+        <form id='form4'>
+           <div style="line-height: 40px;">IP地址：</div>
+                <div>
+                    <select id="ip4" name="ip4" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        {% for db in db_info %}
+                        <option name="ip4">{{ db.ip }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            <div style="line-height: 40px;">时间：</div>
+                <div>
+                <select id="time4" name="time4" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        <option name="op1">7天</option>
+                        <option name="op2">15天</option>
+                        <option name="op2">30天</option>
+                    </select>
+                </div>
+            <div><input type='button' class="btn get" value="查看" id="btn7" name="btn7" style="width:80px;margin-left: 120px;background-color: navy;color:#FFF"></div>
+        </form>
+    </div>
+	</div>
+</div>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'oswatch/js/member/dataparse.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'login/plugins/bootstrap_v3/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%  static 'dashboard/css/dashboard.css' %}">
+    <link rel="stylesheet" href="{%  static 'login/plugins/layer/skin/default/layer.css' %}">
+    <link rel="stylesheet" href="{%  static 'login/plugins/layer/mobile/need/layer.css' %}">
+    <link rel="stylesheet" href="{%  static 'login/plugins/layui/css/layui.css' %}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="navbar-brand" href="{% url '/' %}">数据库运维管理平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {% if username %}
+                <li><a href="javascript:void(0);">{{ username }}</a></li>
+                <li><a href="{% url '/' %}">退出</a></li>
+                {% else %}
+                <li><a href="{% url 'reg' %}">注册</a></li>
+                <li><a href="{% url '/' %}">登录</a></li>
+                {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li>
+                <a href="#" class="father-menu">数据库信息<span class="sr-only">(current)</span></a>
+                 <ul class="second-nav">
+                    <li id="oracle_list" class="active">
+                        <a href="{% url 'db' %}?username={{ username }}&type=oracle_list" onclick="common_ops.goPage('oracle_list')" >数据库列表</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="father-menu">Oracle数据库巡检<span class="sr-only">(current)</span></a>
+                <ul class="second-nav">
+                    <li id="startup_time">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=startup_time" onclick="common_ops.goPage('startup_time')" >启动时间</a>
+                    </li>
+                    <li id="tbs_used">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=tbs_used" onclick="common_ops.goPage('tbs_used')" >表空间使用率</a>
+                    </li>
+                    <li id="update_object">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=update_object"  onclick="common_ops.goPage('update_object')">更新对象</a>
+                    </li>
+                    <li id="job_scheduler">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=job_scheduler"  onclick="common_ops.goPage('job_scheduler')">作业调度</a>
+                    </li>
+                    <li id="db_backup">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=db_backup"  onclick="common_ops.goPage('db_backup')">数据库备份</a>
+                    </li>
+                    <li id="db_archive">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=db_archive"  onclick="common_ops.goPage('db_archive')">数据库归档</a>
+                    </li>
+                    <li id="param_info">
+                        <a href="{% url 'dbcheck' %}?username={{ username }}&type=param_info" onclick="common_ops.goPage('param_info')">性能指标</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">SqlServer巡检<span class="sr-only">(current)</span></a>
+                 <ul class="second-nav">
+                    <li id="sqlserver">
+                        <a href="{% url 'sqlservercheck' %}?username={{ username }}&type=sqlserver" onclick="common_ops.goPage('sqlserver')">sqlserver检查</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">日常操作<span class="sr-only">(current)</span></a>
+                 <ul class="second-nav">
+                    <li id="osw_oper">
+                        <a href="{% url 'oswatch' %}?username={{ username }}&type=osw_oper" onclick="common_ops.goPage('osw_oper')">OSW文件操作</a>
+                    </li>
+                     <li id="mon_pic">
+                        <a href="{% url 'mon_pic' %}?username={{ username }}&type=mon_pic" onclick="common_ops.goPage('mon_pic')">监控数据报表</a>
+                    </li>
+                     <li id="log_oper">
+                        <a href="{% url 'log_oper' %}?username={{ username }}&type=log_oper" onclick="common_ops.goPage('log_oper')">日志操作</a>
+                    </li>
+                </ul>
+            </li>
+              <li>
+                <a href="#">工具使用<span class="sr-only">(current)</span></a>
+                 <ul class="second-nav">
+                    <li id="dbinstall">
+                        <a href="{% url 'dbinstall' %}?username={{ username }}" onclick="common_ops.goPage('dbinstall')">数据库工具</a>
+                    </li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+             {% block content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+<script src="{% static 'login/plugins/jquery.min.js' %}"></script>
+<script src="{% static 'login/plugins/bootstrap_v3/js/bootstrap.js' %}"></script>
+<script src="{% static 'login/plugins/bootstrap_v3/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'login/plugins/layer/layer.js' %}"></script>
+<script src="{% static 'login/js/common.js' %}"></script>
+<script src="{% static 'login/plugins/layui/layui.js' %}"></script>
+{% block js %} {% endblock %}
+<script type="text/javascript">
+    /* 切换标签设置活动标签样式 */
+    window.onload = function () {
+        const pathName = window.location.pathname;
+        const type = location.search.substr(location.search.lastIndexOf('=') + 1);
+        sessionStorage.setItem('currentMenuId', type);
+    };
+</script>
+</body>
+</html>
+

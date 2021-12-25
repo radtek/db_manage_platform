@@ -1,0 +1,330 @@
+{% include "dashboard/dashboard.html" %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'db/css/index.basic.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'login/datatables/jquery.dataTables.css' %}">
+{% endblock css %}
+{% block content %}
+    <section class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="header-container">
+         <header class="common-header">
+{#              {% if type == 'startup_time' %}启动时间{% endif %}#}
+{#              {% if type == 'tbs_used' %}表空间使用率{% endif %}#}
+{#              {% if type == 'update_object' %}更新对象{% endif %}#}
+{#              {% if type == 'job_scheduler' %}作业调度{% endif %}#}
+{#              {% if type == 'db_backup' %}数据库备份{% endif %}#}
+{#              {% if type == 'db_archive' %}数据库归档{% endif %}#}
+{#              {% if type == 'param_info' %}性能指标{% endif %}#}
+              {% if tag == 1 %}启动时间{% endif %}
+              {% if tag == 2 %}表空间使用率{% endif %}
+              {% if tag == 3 %}更新对象{% endif %}
+              {% if tag == 4 %}作业调度{% endif %}
+              {% if tag == 5 %}数据库备份{% endif %}
+              {% if tag == 6 %}数据库归档{% endif %}
+              {% if tag == 7 %}性能指标{% endif %}
+         </header>
+    </div>
+    <div id="query_container">
+        <form id="db_form" name="db_form" method="post">
+                <div style="line-height: 40px;">IP地址：</div>
+                <div>
+                    <select id="ip" name="ip" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        {% for db in db_info %}
+                        <option name="ip">{{ db.ip }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div style="line-height: 40px;">时间：</div>
+                <div>
+                    <select id="time" name="time" class="form-control" style="width:150px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        <option>7天</option>
+                        <option>15天</option>
+                        <option>30天</option>
+                    </select>
+                </div>
+                <div><input type='submit' class="btn" value="搜索" id="getresult" name="getresult" style="width:80px;margin-left: 60px;background-color: #428bca;color:#FFF"></div>
+        </form>
+    </div>
+        <div id="content_container" class="container">
+        <div>
+        <table id="result" class="display" border="1px">
+            {% if tag == 1 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>INSTANCE_NAME</th>
+                        <th>STARTUP_TIME</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 2 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>TABLESPACE_NAME</th>
+                        <th>TOTAL_MB</th>
+                        <th>FREE_MB</th>
+                        <th>USED_MB</th>
+                        <th>FREE_RATIO</th>
+                        <th>USED_RATIO</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 3 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>更新对象个数</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 4 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>LOG_DATE</th>
+                        <th>OWNER</th>
+                        <th>JOB_NAME</th>
+                        <th>STATUS</th>
+                        <th>ERROR#</th>
+                        <th>RUN_DURATION</th>
+                        <th>CPU_USED</th>
+                        <th>ADDITIONAL_INFO</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 5 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>START_TIME</th>
+                        <th>END_TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 6 %}
+               <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>A</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+            {% endif %}
+        {% if tag == 7 %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>HIT</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% if type == 'startup_time' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>INSTANCE_NAME</th>
+                        <th>STARTUP_TIME</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                        <td>{{ row.3 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'tbs_used' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>TABLESPACE_NAME</th>
+                        <th>TOTAL_MB</th>
+                        <th>FREE_MB</th>
+                        <th>USED_MB</th>
+                        <th>FREE_RATIO</th>
+                        <th>USED_RATIO</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                        <td>{{ row.3 }}</td>
+                        <td>{{ row.4 }}</td>
+                        <td>{{ row.5 }}</td>
+                        <td>{{ row.6 }}</td>
+                        <td>{{ row.7 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'update_object' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>更新对象个数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'job_scheduler' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>LOG_DATE</th>
+                        <th>OWNER</th>
+                        <th>JOB_NAME</th>
+                        <th>STATUS</th>
+                        <th>ERROR#</th>
+                        <th>RUN_DURATION</th>
+                        <th>CPU_USED</th>
+                        <th>ADDITIONAL_INFO</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                        <td>{{ row.3 }}</td>
+                        <td>{{ row.4 }}</td>
+                        <td>{{ row.5 }}</td>
+                        <td>{{ row.6 }}</td>
+                        <td>{{ row.7 }}</td>
+                        <td>{{ row.8 }}</td>
+                        <td>{{ row.9 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'db_backup' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>START_TIME</th>
+                        <th>END_TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                        <td>{{ row.3 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'db_archive' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>A</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            {% if type == 'param_info' %}
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>HIT</th>
+                        <th>GETTIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in result %}
+                    <tr>
+                        <td>{{ row.0 }}</td>
+                        <td>{{ row.1 }}</td>
+                        <td>{{ row.2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
+            </table>
+        </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'login/datatables/datatables.js' %}"></script>
+<script src="{% static 'login/datatables/jquery.dataTables.js' %}"></script>
+<script>
+    $(document).ready( function () {
+        common_ops.changeMenu();
+        $('#result').DataTable( {
+    language:{
+        "processing": "处理中...",
+        "lengthMenu": "查询结果列表：显示 _MENU_ 项结果",
+        "zeroRecords": "没有匹配结果",
+        "info": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+        "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+        "infoFiltered": "(由 _MAX_ 项结果过滤)",
+        "infoPostFix": "",
+        "search": "搜索:",
+        "searchPlaceholder": "搜索...",
+        "url": "",
+        "emptyTable": "表中数据为空",
+        "loadingRecords": "载入中...",
+        "infoThousands": ",",
+        "paginate": {
+            "first": "首页",
+            "previous": "上页",
+            "next": "下页",
+            "last": "末页"
+        },
+        "aria": {
+            "paginate": {
+                "first": "首页",
+                "previous": "上页",
+                "next": "下页",
+                "last": "末页"
+            },
+            "sortAscending": "以升序排列此列",
+            "sortDescending": "以降序排列此列"
+        },
+        "thousands": "."
+        }
+    } );
+    } );
+</script>
+{% endblock js %}

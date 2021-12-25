@@ -1,0 +1,38 @@
+{% include 'dashboard/dashboard.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'db/css/index.basic.css' %}">
+{% endblock css %}
+{% block content %}
+    <section class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+{#    <div style="line-height: 50px;text-align: center;font-size: 25px">日志操作：</div>#}
+    <div class="header-container">
+         <header class="common-header">日志操作</header>
+    </div>
+    <div id="query_container">
+        <form id='form2'>
+           <div style="line-height: 40px;">IP地址：</div>
+                <div>
+                    <select id="ip2" name="ip2" class="form-control" style="width:160px;margin-right: 20px;">
+                        <option selected="selected" disabled>--请选择</option>
+                        {% for db in real_db_info %}
+                        <option name="ip2">{{ db.ip }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" name="btn_name2" id="btn_name2">
+                </div>
+            <div><input type='button' class="btn2 get2 common-btn" value="alert日志下载" id="btn2" name="btn2"></div>
+            <div><input type='button' class="btn3 get3 common-btn" value="altert日志查看" id="btn3" name="btn3"></div>
+            <div><input type='button' class="btn4 get4 common-btn" value="os日志下载" id="btn4" name="btn4"></div>
+            <div><input type='button' class="btn5 get5 common-btn" value="os日志查看" id="btn5" name="btn5"></div>
+        </form>
+    </div>
+    <div style="margin: 0 20px 0 13px;">
+        <textarea  id="text" class="form-control" rows="20"></textarea>
+    </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'oswatch/js/member/log.js' %}"></script>
+{% endblock %}
