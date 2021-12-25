@@ -13,7 +13,7 @@
 
 1.  安装Python 3.6.6（忽略此步骤）
 
-2.  安装相关包
+2.  安装相关包  
 pip install Django==2.2.10  
 pip install cx-Oracle==7.2.2  
 pip install matplotlib==3.3.4  
@@ -29,7 +29,7 @@ pip install xlwings==0.24.7
 pip install xlwt==1.3.0  
 pip install Pillow==8.4.0  
 
-3.  安装MySQL数据库（忽略此步骤）
+3.  安装MySQL数据库（忽略此步骤）  
 
 4. MySQL创建数据库  
     create database userdb default character set utf8;  
