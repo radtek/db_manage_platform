@@ -56,7 +56,10 @@ pip install Pillow==8.4.0
 
 #### 使用说明  
 
-1.  登录界面  
+1.  登录界面 
+![Image text](https://gitee.com/code-horse-mi/dbmanage_v4/raw/master/%E5%8A%9F%E8%83%BD%E6%88%AA%E5%9B%BE/%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD.png)
+
+ 
 
 
 2.  xxxx
