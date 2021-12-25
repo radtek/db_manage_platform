@@ -4,16 +4,55 @@
 公司团队内部数据库运维管理平台，暂时满足公司内部数据库日常运维需求，后续继续完善和补充。
 
 #### 软件架构
-Python 3.6.6
-Django 2.2.10
+1. Python 3.6.6
 
+2. Django 2.2.10
 
 
 #### 安装教程
 
 1.  安装Python 3.6.6（忽略此步骤）
-2.  
-3.  xxxx
+
+2.  安装相关包
+    pip install Django==2.2.10
+    pip install cx-Oracle==7.2.2
+    pip install matplotlib==3.3.4
+    pip install numpy==1.19.5
+    pip install pandas==1.1.5
+    pip install paramiko==2.6.0
+    pip install PyMySQL==0.9.3
+    pip install selenium==2.53.6
+    pip install WxPython==4.1.1
+    pip install xlrd==1.2.0
+    pip install xlutils==2.0.0
+    pip install xlwings==0.24.7
+    pip install xlwt==1.3.0
+    pip install Pillow==8.4.0
+
+3.  安装MySQL数据库（忽略此步骤）
+
+4. MySQL创建数据库
+    create database userdb default character set utf8;
+
+5. Django中配置setting.py文件,修改连接数据库配置
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'userdb',
+            'USER':'用户',
+            'PASSWORD':'密码',
+            'HOST':'数据库IP',
+            'PORT':'数据库端口'
+        }
+    }
+
+5. Django迁移表到MySQL的userdb数据库中
+    python manage.py makemigrations
+    python manage.py migrate
+
+6. 启动DJango服务
+    python manage.py runserver 0.0.0.0:8000
+    
 
 #### 使用说明
 
