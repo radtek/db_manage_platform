@@ -14,20 +14,20 @@
 1.  安装Python 3.6.6（忽略此步骤）
 
 2.  安装相关包
-    pip install Django==2.2.10  
-    pip install cx-Oracle==7.2.2  
-    pip install matplotlib==3.3.4  
-    pip install numpy==1.19.5  
-    pip install pandas==1.1.5  
-    pip install paramiko==2.6.0  
-    pip install PyMySQL==0.9.3  
-    pip install selenium==2.53.6  
-    pip install WxPython==4.1.1  
-    pip install xlrd==1.2.0  
-    pip install xlutils==2.0.0  
-    pip install xlwings==0.24.7  
-    pip install xlwt==1.3.0  
-    pip install Pillow==8.4.0  
+pip install Django==2.2.10  
+pip install cx-Oracle==7.2.2  
+pip install matplotlib==3.3.4  
+pip install numpy==1.19.5  
+pip install pandas==1.1.5  
+pip install paramiko==2.6.0  
+pip install PyMySQL==0.9.3  
+pip install selenium==2.53.6  
+pip install WxPython==4.1.1  
+pip install xlrd==1.2.0  
+pip install xlutils==2.0.0  
+pip install xlwings==0.24.7  
+pip install xlwt==1.3.0  
+pip install Pillow==8.4.0  
 
 3.  安装MySQL数据库（忽略此步骤）
 
